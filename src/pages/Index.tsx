@@ -1,76 +1,194 @@
-import { useState, useEffect } from "react";
-import FoodForm, { type FoodEntry } from "@/components/FoodForm";
-import FoodList from "@/components/FoodList";
-import FoodCharts from "@/components/FoodCharts";
-import { Apple } from "lucide-react";
+import { useState } from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import ProductCard, { type Product } from "@/components/ProductCard";
+import CategoryFilter from "@/components/CategoryFilter";
+import { toast } from "sonner";
+import { Instagram, Facebook, Twitter } from "lucide-react";
 
-const STORAGE_KEY = "food-tracker-data";
+// Import images
+import product1 from "@/assets/product-1.jpg";
+import product2 from "@/assets/product-2.jpg";
+import product3 from "@/assets/product-3.jpg";
+import product4 from "@/assets/product-4.jpg";
+import product5 from "@/assets/product-5.jpg";
+import product6 from "@/assets/product-6.jpg";
+
+const PRODUCTS: Product[] = [
+  {
+    id: "1",
+    name: "Jersey Oversize Beige",
+    category: "Mujer",
+    price: 89.99,
+    image: product1,
+    description: "Suave jersey de algodón orgánico con corte oversize. Perfecto para un look casual y elegante.",
+  },
+  {
+    id: "2",
+    name: "Pantalón Lino Terracota",
+    category: "Mujer",
+    price: 125.00,
+    image: product2,
+    description: "Pantalón de lino premium de pierna ancha. Comodidad y estilo en tonos tierra.",
+  },
+  {
+    id: "3",
+    name: "Blusa Seda Verde Salvia",
+    category: "Mujer",
+    price: 149.00,
+    image: product3,
+    description: "Elegante blusa de seda 100% natural. Diseño minimalista con caída perfecta.",
+  },
+  {
+    id: "4",
+    name: "Vestido Lino Crema",
+    category: "Mujer",
+    price: 179.99,
+    image: product4,
+    description: "Vestido midi de lino premium. Ideal para cualquier ocasión con su diseño atemporal.",
+  },
+  {
+    id: "5",
+    name: "Cárdigan Cashmere Rosa",
+    category: "Mujer",
+    price: 199.00,
+    image: product5,
+    description: "Lujoso cárdigan de cashmere en tono blush. Suavidad incomparable y elegancia absoluta.",
+  },
+  {
+    id: "6",
+    name: "Chaqueta Ante Taupe",
+    category: "Mujer",
+    price: 299.00,
+    image: product6,
+    description: "Sofisticada chaqueta de ante sintético. Diseño contemporáneo con acabados premium.",
+  },
+];
+
+const CATEGORIES = ["Todas", "Mujer", "Hombre", "Accesorios"];
 
 const Index = () => {
-  const [foods, setFoods] = useState<FoodEntry[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [cartCount, setCartCount] = useState(0);
 
-  // Cargar datos del localStorage
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        setFoods(JSON.parse(stored));
-      } catch (error) {
-        console.error("Error loading data:", error);
-      }
-    }
-  }, []);
+  const filteredProducts =
+    selectedCategory === "Todas"
+      ? PRODUCTS
+      : PRODUCTS.filter((p) => p.category === selectedCategory);
 
-  // Guardar datos en localStorage
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(foods));
-  }, [foods]);
-
-  const handleAddFood = (food: Omit<FoodEntry, "id">) => {
-    const newFood: FoodEntry = {
-      ...food,
-      id: crypto.randomUUID(),
-    };
-    setFoods((prev) => [...prev, newFood]);
-  };
-
-  const handleDeleteFood = (id: string) => {
-    setFoods((prev) => prev.filter((food) => food.id !== id));
+  const handleAddToCart = (product: Product) => {
+    setCartCount((prev) => prev + 1);
+    toast.success(`${product.name} añadido al carrito`, {
+      description: `Precio: €${product.price.toFixed(2)}`,
+    });
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="gradient-bg border-b border-border">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-              <Apple className="w-7 h-7 text-primary-foreground" />
-            </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              NutriTrack
-            </h1>
+    <div className="min-h-screen">
+      <Header cartCount={cartCount} />
+      <Hero />
+
+      {/* Products Section */}
+      <section id="products" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              Nuestra Colección
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Descubre piezas únicas diseñadas con amor y atención al detalle. 
+              Moda sostenible que perdura en el tiempo.
+            </p>
           </div>
-          <p className="text-muted-foreground text-lg">
-            Registra y visualiza tu alimentación diaria
-          </p>
-        </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <FoodForm onAddFood={handleAddFood} />
-          <FoodList foods={foods} onDeleteFood={handleDeleteFood} />
-        </div>
+          <CategoryFilter
+            categories={CATEGORIES}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+          />
 
-        <FoodCharts foods={foods} />
-      </main>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 gradient-bg">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 brand-text">
+              La Historia de Bangie
+            </h2>
+            <p className="text-lg text-foreground/80 leading-relaxed mb-8">
+              Nacimos con la misión de crear moda consciente y atemporal. Cada pieza 
+              de Bangie está pensada para durar, combinando materiales de calidad con 
+              diseños que trascienden las tendencias pasajeras.
+            </p>
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Creemos en la elegancia sostenible, en prendas que cuentan historias y 
+              en el poder de la moda para expresar tu individualidad única.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-16 py-8">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2025 NutriTrack - Seguimiento inteligente de alimentación</p>
+      <footer className="bg-card border-t border-border py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-2xl font-bold brand-text mb-4">Bangie</h3>
+              <p className="text-sm text-muted-foreground">
+                Moda consciente y atemporal desde 2025
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4 text-foreground">Comprar</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Mujer</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Hombre</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Accesorios</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Rebajas</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4 text-foreground">Ayuda</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Envíos</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Devoluciones</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Tallas</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Contacto</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4 text-foreground">Síguenos</h4>
+              <div className="flex gap-4">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Twitter className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>© 2025 Bangie. Todos los derechos reservados.</p>
+          </div>
         </div>
       </footer>
     </div>

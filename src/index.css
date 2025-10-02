@@ -8,97 +8,112 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 200 15% 20%;
+    /* Colores pasteles y tierra */
+    --background: 30 40% 97%;
+    --foreground: 25 30% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 200 15% 20%;
+    --card-foreground: 25 30% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 200 15% 20%;
+    --popover-foreground: 25 30% 25%;
 
-    --primary: 142 76% 36%;
+    --primary: 25 50% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 142 76% 56%;
+    --primary-glow: 25 60% 70%;
 
-    --secondary: 24 95% 53%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 15 55% 75%;
+    --secondary-foreground: 25 30% 25%;
 
-    --muted: 200 20% 96%;
-    --muted-foreground: 200 10% 45%;
+    --muted: 30 30% 92%;
+    --muted-foreground: 25 20% 50%;
 
-    --accent: 204 94% 47%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 340 60% 80%;
+    --accent-foreground: 25 30% 25%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 20% 90%;
-    --input: 200 20% 90%;
-    --ring: 142 76% 36%;
+    --border: 30 25% 88%;
+    --input: 30 25% 88%;
+    --ring: 25 50% 60%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 30 40% 98%;
+    --sidebar-foreground: 25 30% 30%;
+    --sidebar-primary: 25 50% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 30% 95%;
+    --sidebar-accent-foreground: 25 30% 30%;
+    --sidebar-border: 30 25% 90%;
+    --sidebar-ring: 25 50% 60%;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 56%));
-    --gradient-hero: linear-gradient(135deg, hsl(142 76% 36% / 0.1), hsl(204 94% 47% / 0.1));
-    --shadow-card: 0 4px 20px hsl(200 20% 20% / 0.08);
-    --shadow-hover: 0 8px 30px hsl(200 20% 20% / 0.12);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Custom design tokens - Paleta Bangie */
+    --terracotta: 15 60% 65%;
+    --sage: 120 20% 75%;
+    --blush: 340 65% 85%;
+    --cream: 40 40% 92%;
+    --taupe: 25 25% 65%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(25 50% 60%), hsl(15 60% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(340 65% 85% / 0.3), hsl(25 50% 60% / 0.2));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(30 30% 98%));
+    --shadow-card: 0 4px 20px hsl(25 30% 25% / 0.08);
+    --shadow-hover: 0 12px 40px hsl(25 30% 25% / 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 200 20% 8%;
-    --foreground: 0 0% 95%;
+    --background: 25 20% 12%;
+    --foreground: 30 20% 90%;
 
-    --card: 200 20% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 25 20% 15%;
+    --card-foreground: 30 20% 90%;
 
-    --popover: 200 20% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 25 20% 15%;
+    --popover-foreground: 30 20% 90%;
 
-    --primary: 142 76% 46%;
+    --primary: 25 50% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 142 76% 66%;
+    --primary-glow: 25 60% 65%;
 
-    --secondary: 24 95% 58%;
+    --secondary: 15 45% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 200 20% 16%;
-    --muted-foreground: 200 10% 65%;
+    --muted: 25 15% 20%;
+    --muted-foreground: 30 15% 65%;
 
-    --accent: 204 94% 57%;
+    --accent: 340 55% 70%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50.6%;
+    --destructive: 0 65% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 20% 20%;
-    --input: 200 20% 20%;
-    --ring: 142 76% 56%;
+    --border: 25 15% 25%;
+    --input: 25 15% 25%;
+    --ring: 25 50% 55%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 25 20% 10%;
+    --sidebar-foreground: 30 20% 85%;
+    --sidebar-primary: 25 50% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 25 15% 18%;
+    --sidebar-accent-foreground: 30 20% 85%;
+    --sidebar-border: 25 15% 20%;
+    --sidebar-ring: 25 50% 55%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 46%), hsl(142 76% 66%));
-    --gradient-hero: linear-gradient(135deg, hsl(142 76% 46% / 0.1), hsl(204 94% 57% / 0.1));
-    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
-    --shadow-hover: 0 8px 30px hsl(0 0% 0% / 0.4);
+    --terracotta: 15 55% 55%;
+    --sage: 120 15% 60%;
+    --blush: 340 60% 70%;
+    --cream: 40 30% 80%;
+    --taupe: 25 20% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(25 50% 55%), hsl(15 55% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(340 60% 70% / 0.2), hsl(25 50% 55% / 0.2));
+    --gradient-card: linear-gradient(180deg, hsl(25 20% 15%), hsl(25 20% 18%));
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.4);
+    --shadow-hover: 0 12px 40px hsl(0 0% 0% / 0.5);
   }
 }
 
@@ -116,11 +131,33 @@ All colors MUST be HSL.
 
 @layer components {
   .card-elevated {
-    @apply bg-card rounded-xl shadow-[0_4px_20px_hsl(var(--shadow-card))] 
-           transition-shadow duration-300 hover:shadow-[0_8px_30px_hsl(var(--shadow-hover))];
+    background: var(--gradient-card);
+    @apply rounded-xl shadow-[0_4px_20px_hsl(var(--shadow-card))] 
+           transition-all duration-500 hover:shadow-[0_12px_40px_hsl(var(--shadow-hover))]
+           hover:-translate-y-1;
   }
   
   .gradient-bg {
     background: var(--gradient-hero);
+  }
+
+  .brand-text {
+    font-family: 'Pacifico', cursive;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .product-card {
+    @apply card-elevated overflow-hidden;
+  }
+
+  .product-card:hover .product-image {
+    @apply scale-110;
+  }
+
+  .product-image {
+    @apply transition-transform duration-700 ease-out;
   }
 }
