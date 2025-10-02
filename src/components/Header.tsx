@@ -21,16 +21,16 @@ export default function Header({ cartCount }: HeaderProps) {
                 Colección
               </a>
               <a href="#" className="text-sm font-medium hover:text-primary transition-colors">
-                Mujer
+                Labios
               </a>
               <a href="#" className="text-sm font-medium hover:text-primary transition-colors">
-                Hombre
+                Ojos
               </a>
               <a href="#" className="text-sm font-medium hover:text-primary transition-colors">
-                Accesorios
+                Rostro
               </a>
               <a href="#" className="text-sm font-medium hover:text-primary transition-colors">
-                Rebajas
+                Fragancias
               </a>
             </nav>
           </div>

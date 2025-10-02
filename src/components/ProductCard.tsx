@@ -51,7 +51,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         
         <div className="flex items-center justify-between">
           <span className="text-2xl font-bold text-primary">
-            €{product.price.toFixed(2)}
+            Q{product.price.toFixed(2)}
           </span>
           <Button
             onClick={() => onAddToCart(product)}

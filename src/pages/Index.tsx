@@ -7,65 +7,65 @@ import { toast } from "sonner";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
 // Import images
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-import product5 from "@/assets/product-5.jpg";
-import product6 from "@/assets/product-6.jpg";
+import makeup1 from "@/assets/makeup-1.jpg";
+import makeup2 from "@/assets/makeup-2.jpg";
+import makeup3 from "@/assets/makeup-3.jpg";
+import makeup4 from "@/assets/makeup-4.jpg";
+import makeup5 from "@/assets/makeup-5.jpg";
+import makeup6 from "@/assets/makeup-6.jpg";
 
 const PRODUCTS: Product[] = [
   {
     id: "1",
-    name: "Jersey Oversize Beige",
-    category: "Mujer",
-    price: 89.99,
-    image: product1,
-    description: "Suave jersey de algodón orgánico con corte oversize. Perfecto para un look casual y elegante.",
+    name: "Labial Mate Rosa Pétalo",
+    category: "Labios",
+    price: 125.00,
+    image: makeup1,
+    description: "Labial mate de larga duración con acabado aterciopelado. Fórmula enriquecida con vitamina E.",
   },
   {
     id: "2",
-    name: "Pantalón Lino Terracota",
-    category: "Mujer",
-    price: 125.00,
-    image: product2,
-    description: "Pantalón de lino premium de pierna ancha. Comodidad y estilo en tonos tierra.",
+    name: "Paleta Sombras Pastel Dreams",
+    category: "Ojos",
+    price: 285.00,
+    image: makeup2,
+    description: "Paleta con 12 sombras en tonos pastel altamente pigmentados. Acabados mate y shimmer.",
   },
   {
     id: "3",
-    name: "Blusa Seda Verde Salvia",
-    category: "Mujer",
-    price: 149.00,
-    image: product3,
-    description: "Elegante blusa de seda 100% natural. Diseño minimalista con caída perfecta.",
+    name: "Base Líquida Luminosa",
+    category: "Rostro",
+    price: 195.00,
+    image: makeup3,
+    description: "Base de cobertura media con acabado natural luminoso. Hidratante y de larga duración.",
   },
   {
     id: "4",
-    name: "Vestido Lino Crema",
-    category: "Mujer",
-    price: 179.99,
-    image: product4,
-    description: "Vestido midi de lino premium. Ideal para cualquier ocasión con su diseño atemporal.",
+    name: "Máscara de Pestañas Volumen",
+    category: "Ojos",
+    price: 145.00,
+    image: makeup4,
+    description: "Máscara que proporciona volumen y longitud extrema. Fórmula resistente al agua.",
   },
   {
     id: "5",
-    name: "Cárdigan Cashmere Rosa",
-    category: "Mujer",
-    price: 199.00,
-    image: product5,
-    description: "Lujoso cárdigan de cashmere en tono blush. Suavidad incomparable y elegancia absoluta.",
+    name: "Rubor Iluminador Rosado",
+    category: "Rostro",
+    price: 165.00,
+    image: makeup5,
+    description: "Rubor cremoso con partículas iluminadoras. Aporta un glow natural y saludable.",
   },
   {
     id: "6",
-    name: "Chaqueta Ante Taupe",
-    category: "Mujer",
-    price: 299.00,
-    image: product6,
-    description: "Sofisticada chaqueta de ante sintético. Diseño contemporáneo con acabados premium.",
+    name: "Perfume Floral Lavanda",
+    category: "Fragancias",
+    price: 425.00,
+    image: makeup6,
+    description: "Fragancia floral con notas de lavanda, jazmín y vainilla. Elegancia y sofisticación.",
   },
 ];
 
-const CATEGORIES = ["Todas", "Mujer", "Hombre", "Accesorios"];
+const CATEGORIES = ["Todas", "Labios", "Ojos", "Rostro", "Fragancias"];
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
@@ -79,7 +79,7 @@ const Index = () => {
   const handleAddToCart = (product: Product) => {
     setCartCount((prev) => prev + 1);
     toast.success(`${product.name} añadido al carrito`, {
-      description: `Precio: €${product.price.toFixed(2)}`,
+      description: `Precio: Q${product.price.toFixed(2)}`,
     });
   };
 
@@ -96,8 +96,8 @@ const Index = () => {
               Nuestra Colección
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Descubre piezas únicas diseñadas con amor y atención al detalle. 
-              Moda sostenible que perdura en el tiempo.
+              Descubre productos de maquillaje únicos diseñados para realzar tu belleza natural. 
+              Cosmética de alta calidad con colores vibrantes y texturas sedosas.
             </p>
           </div>
 
@@ -127,13 +127,13 @@ const Index = () => {
               La Historia de Bangie
             </h2>
             <p className="text-lg text-foreground/80 leading-relaxed mb-8">
-              Nacimos con la misión de crear moda consciente y atemporal. Cada pieza 
-              de Bangie está pensada para durar, combinando materiales de calidad con 
-              diseños que trascienden las tendencias pasajeras.
+              Nacimos con la pasión de crear belleza auténtica y expresiva. Cada producto 
+              de Bangie está formulado con ingredientes de alta calidad, combinando ciencia 
+              y creatividad para resaltar tu belleza única.
             </p>
             <p className="text-lg text-foreground/80 leading-relaxed">
-              Creemos en la elegancia sostenible, en prendas que cuentan historias y 
-              en el poder de la moda para expresar tu individualidad única.
+              Creemos en el poder del maquillaje para empoderar, en colores que inspiran y 
+              en la belleza como una forma de expresión personal sin límites.
             </p>
           </div>
         </div>
@@ -146,17 +146,17 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-bold brand-text mb-4">Bangie</h3>
               <p className="text-sm text-muted-foreground">
-                Moda consciente y atemporal desde 2025
+                Belleza auténtica desde 2025
               </p>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4 text-foreground">Comprar</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Mujer</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Hombre</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Accesorios</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Rebajas</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Labios</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Ojos</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Rostro</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Fragancias</a></li>
               </ul>
             </div>
 

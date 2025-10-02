@@ -28,8 +28,8 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl md:text-2xl text-foreground/80 mb-8 leading-relaxed">
-            Descubre la elegancia en cada prenda. Moda consciente y atemporal 
-            para expresar tu estilo único.
+            Descubre la belleza en cada color. Maquillaje de alta calidad 
+            para expresar tu estilo único y realzar tu belleza natural.
           </p>
           
           <div className="flex flex-wrap gap-4">
